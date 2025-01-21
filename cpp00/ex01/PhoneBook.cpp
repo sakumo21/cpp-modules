@@ -1,40 +1,4 @@
-#include <iostream>
-#include <cstring>
-#include <sstream>
-
-class Contact{
-    public:
-        std::string FirstName;
-        std::string LastName;
-        std::string Nickname;
-        std::string PhoneNumber;
-        void add_user(Contact *mycontact);
-        std::string get_DarkestSecret(Contact c){return c.DarkestSecret;};
-    private:
-        std::string DarkestSecret; 
-};
-class PhoneBook{
-    public:
-    Contact PhoneContact[8];
-    int     count;
-    void show_user(PhoneBook MyPhoneBook);
-    void show_details(PhoneBook MyPhoneBook);
-};
-
-void Contact::add_user(Contact *contact)
-{
-    std::cin.ignore();
-    std::cout << "FirstName: ";
-    std::getline(std::cin, contact->FirstName);
-    std::cout << "LastName: ";
-    std::getline(std::cin, contact->LastName);
-    std::cout << "Nickname: ";
-    std::getline(std::cin, contact->Nickname);
-    std::cout << "PhoneNumber: ";
-    std::getline(std::cin, contact->PhoneNumber);
-    std::cout << "DarkestSecret: ";
-    std::getline(std::cin, contact->DarkestSecret);
-}
+#include "PhoneBook.hpp"
 
 void formatting_right(std::string line)
 {
@@ -104,36 +68,4 @@ void PhoneBook::show_user(PhoneBook PhoneB)
         std::cout << "|" << "\n";
         i++;
     }
-}
-
-int main()
-{
-    PhoneBook mycontact;
-    std::string input;
-    mycontact.count = 0;
-    int i = 0;
-
-    while(1)
-    {
-        std::cout << "->";
-        std::cin >> input;
-        std::cin.clear();
-        if (i == 8)
-            i = 0;
-        if (input == "SEARCH")
-        {
-            mycontact.show_user(mycontact);
-            mycontact.show_details(mycontact);
-        }
-        else if (input == "ADD")
-        {
-            mycontact.PhoneContact[i % 8].add_user(&mycontact.PhoneContact[i % 8]);
-            if (mycontact.count <= 8)
-                mycontact.count++;
-            i++;
-        }
-        else if (input == "EXIT")
-            break;
-    }
-
 }
