@@ -8,7 +8,7 @@ class Replicate
 {
     public:
     Replicate(std::string filename): o_file(filename) {r_file = o_file + ".replace";}
-    ~Replicate();
+    ~Replicate() {}
 
     void replace(std::string s1, std::string s2);
     private:

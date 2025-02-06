@@ -6,6 +6,7 @@ int main(int ac, char **av)
         std::cerr << "ERROR!: NOT ENOUGH PARAMETERS!" << "\n";
     else
     {
-        Replicate newfile(av[0]);
+        Replicate newfile(av[1]);
+        newfile.replace(av[2], av[3]);
     }
 }
