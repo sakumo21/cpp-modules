@@ -17,7 +17,8 @@ int main()
         if (input == "SEARCH")
         {
             mycontact.show_user(mycontact);
-            mycontact.show_details(mycontact);
+            if (mycontact.count > 0)
+                mycontact.show_details(mycontact);
         }
         else if (input == "ADD")
         {

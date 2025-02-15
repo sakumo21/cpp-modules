@@ -19,7 +19,6 @@ static	float ft_pow(float base, int exp)
 
 int Fixed::getRawBits( void ) const
 {
-    std::cout << "getRawBits member function called" << std::endl;
     return (this->fixed); 
 }
 void Fixed::setRawBits( int const raw )

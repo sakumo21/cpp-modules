@@ -6,9 +6,8 @@ void formatting_right(std::string line)
     int len = strlen(line.c_str());
     if (len < 10)
     {
+        std::cout << std::setw(10);
         std::cout << line;
-        for (int i = 0; i < 10 - len; i++)
-            std::cout << " ";
     }
     else if (len > 10)
     {
@@ -23,9 +22,9 @@ void formatting_right(std::string line)
 }
 void print_index(int index)
 {
+    std::cout << "|";
+    std::cout << std::setw(10);
     std::cout << index;
-    for (int i = 0; i < 10; i++)
-        std::cout << " ";
 }
 
 void PhoneBook::show_details(PhoneBook MyPhoneBook)
