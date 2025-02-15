@@ -2,10 +2,13 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
     public:
+    Fixed(const int i);
+    Fixed(const float i);
     Fixed():fixed(0){std::cout << "Default constructor called" << std::endl;}
     ~Fixed(){std::cout << "Destructor called" << std::endl;}
     Fixed(const Fixed& other)
@@ -22,6 +25,14 @@ class Fixed
 
     int getRawBits( void ) const;
     void setRawBits( int const raw );
+    float toFloat( void ) const;
+    int toInt( void ) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+        os << obj.toFloat();
+        return os;
+    }
+
     private:
     int                 fixed;
     static const int    fract;
