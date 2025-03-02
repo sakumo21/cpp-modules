@@ -7,28 +7,28 @@ int main()
     mycontact.count = 0;
     int i = 0;
 
-    while(1)
+
+    std::cout << "->";
+    while(std::cin >> input)
     {
-        std::cout << "->";
-        std::cin >> input;
-        std::cin.clear();
         if (i == 8)
             i = 0;
         if (input == "SEARCH")
         {
-            mycontact.show_user(mycontact);
+            mycontact.show_user();
             if (mycontact.count > 0)
-                mycontact.show_details(mycontact);
+                mycontact.show_details();
         }
         else if (input == "ADD")
         {
-            mycontact.PhoneContact[i % 8].add_user(&mycontact.PhoneContact[i % 8]);
+            mycontact.PhoneContact[i % 8].add_user();
             if (mycontact.count <= 8)
                 mycontact.count++;
             i++;
         }
         else if (input == "EXIT")
             break;
+        std::cout << "->";
     }
 
 }

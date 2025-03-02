@@ -1,6 +1,8 @@
 #include "Account.hpp"
 #include <ctime>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -98,17 +100,13 @@ void	Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-    std::time_t now = std::time(0);                // Get current time
-    std::tm* local_time = std::localtime(&now);    // Convert to local time
+    time_t timestamp;
+    char output[50];
+    struct tm * datetime;
 
-    std::cout << "[";
-    std::cout << (1900 + local_time->tm_year);     // Year
-    std::cout << (local_time->tm_mon + 1 < 10 ? "0" : "") << (local_time->tm_mon + 1); // Month
-    std::cout << (local_time->tm_mday < 10 ? "0" : "") << local_time->tm_mday;         // Day
-    std::cout << "_";
-    std::cout << (local_time->tm_hour < 10 ? "0" : "") << local_time->tm_hour;         // Hour
-    std::cout << (local_time->tm_min < 10 ? "0" : "") << local_time->tm_min;           // Minutes
-    std::cout << (local_time->tm_sec < 10 ? "0" : "") << local_time->tm_sec;           // Seconds
-    std::cout << "] ";
+    time(&timestamp);
+    datetime = localtime(&timestamp);
+
+    strftime(output, 50, "%G%m%d_%H%M%S", datetime);
+    std::cout << "[" <<output << "] ";
 }
-//p_amount == post amount / 9bl mn deposit or withdrawal

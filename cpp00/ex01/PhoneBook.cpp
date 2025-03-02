@@ -27,28 +27,30 @@ void print_index(int index)
     std::cout << index;
 }
 
-void PhoneBook::show_details(PhoneBook MyPhoneBook)
+void PhoneBook::show_details()
 {
     int  con_to_int;
     char contact_required;
 
     std::cout << "enter your required contact:";
     std::cin >> contact_required;
-    std::cin.clear();
+    std::cin.ignore(1000, '\n');
+    if (std::cin.eof())
+        return ;
     con_to_int = contact_required - '0';
-    if (isalpha(contact_required) || MyPhoneBook.count < con_to_int)
+    if (isalpha(contact_required) || count - 1 < con_to_int)
     {
         std::cout << "ERROR: this contact is invalid!\n";
         return ;
     }
-    std::cout << "FirstName: " << MyPhoneBook.PhoneContact[con_to_int].FirstName << "\n";
-    std::cout << "LastName: " << MyPhoneBook.PhoneContact[con_to_int].LastName << "\n";
-    std::cout << "Nickname: " << MyPhoneBook.PhoneContact[con_to_int].Nickname << "\n";
-    std::cout << "PhoneNumber: " << MyPhoneBook.PhoneContact[con_to_int].PhoneNumber << "\n";
-    std::cout << "DarkestSecret: " << MyPhoneBook.PhoneContact[con_to_int].get_DarkestSecret(PhoneContact[con_to_int]) << "\n";
+    std::cout << "FirstName: " << PhoneContact[con_to_int].get_FirstName() << "\n";
+    std::cout << "LastName: " << PhoneContact[con_to_int].get_LastName() << "\n";
+    std::cout << "Nickname: " << PhoneContact[con_to_int].get_NickName() << "\n";
+    std::cout << "PhoneNumber: " << PhoneContact[con_to_int].get_PhoneNumber() << "\n";
+    std::cout << "DarkestSecret: " << PhoneContact[con_to_int].get_DarkestSecret() << "\n";
 }
 
-void PhoneBook::show_user(PhoneBook PhoneB)
+void PhoneBook::show_user()
 {
     int i = 0;
     formatting_right("Index");
@@ -57,13 +59,13 @@ void PhoneBook::show_user(PhoneBook PhoneB)
     formatting_right("NickName");
     formatting_right("PhoneNum");
     std::cout << "|" << "\n";
-    while (i < PhoneB.count)
+    while (i < count)
     {
         print_index(i);
-        formatting_right(PhoneB.PhoneContact[i].FirstName);
-        formatting_right(PhoneB.PhoneContact[i].LastName);
-        formatting_right(PhoneB.PhoneContact[i].Nickname);
-        formatting_right(PhoneB.PhoneContact[i].PhoneNumber);
+        formatting_right(PhoneContact[i].get_FirstName());
+        formatting_right(PhoneContact[i].get_LastName());
+        formatting_right(PhoneContact[i].get_NickName());
+        formatting_right(PhoneContact[i].get_PhoneNumber());
         std::cout << "|" << "\n";
         i++;
     }

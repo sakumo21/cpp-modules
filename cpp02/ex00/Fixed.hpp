@@ -26,5 +26,5 @@ class Fixed
     int                 fixed;
     static const int    fract;
 };
-
+T a  = g;
 #endif
