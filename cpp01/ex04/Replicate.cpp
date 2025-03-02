@@ -18,8 +18,16 @@ void	Replicate::replace(std::string s1, std::string s2)
     std::string b_line;
     std::string sep_line;
     std::string new_line;
-    int         i;
+    size_t      i;
 
+    if (s1.empty())
+    {
+        std::cout << "xzxzx" << std::endl;
+    }
+    else
+    {
+        std::cout << "ccscsc" << std::endl;
+    }
     std::ifstream inputFile(o_file.c_str());
     if (!inputFile.is_open())
     {
@@ -36,24 +44,23 @@ void	Replicate::replace(std::string s1, std::string s2)
 
 	while (std::getline(inputFile, line))
     {
-        i = line.find(s1);
-        new_line = line;
-        while (i >= 0)
+        if (!s1.empty() && s1 != s2)
         {
-            if (i == 0)
+            std::cout << "xzxzx2" << std::endl;
+            i = line.find(s1);
+            new_line = line;
+            while (i != std::string::npos)
             {
-                sep_line = after_string(new_line, s1.length());
-                new_line = s2 + sep_line;
+                new_line.erase(i, s1.length());
+                new_line.insert(i, s2);
+                i = new_line.find(s1);
             }
-            else if (i > 0)
-            {
-                b_line = before_string(new_line, i);
-                sep_line = after_string(new_line,i + s1.length());
-                new_line = b_line + s2 + sep_line;
-            }
-            i = new_line.find(s1);
+            outputFile << new_line << std::endl;
         }
-        outputFile << new_line << std::endl;
+        else
+        {
+            outputFile << line << std::endl;
+        }
     }
     outputFile.close();
     inputFile.close();

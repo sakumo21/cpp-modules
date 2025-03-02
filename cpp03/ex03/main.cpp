@@ -1,5 +1,6 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
+#include <cstdlib>
 // int main( void ) 
 // {
 //     FragTrap p1("P.E.K.K.A", "hog rider");
@@ -14,39 +15,20 @@
 //     return 0;
 // }
 
-void	alice_rundown(void)
+int main( void )
 {
-	FragTrap alice("Alice", "nini");
+    DiamondTrap ash( "Ash" );
+    DiamondTrap ash2( ash );
+    DiamondTrap ash3(".");
 
-	alice.attack("Bob");
-	alice.attack("Chris");
-	alice.attack("Diana");
-	alice.attack("Elisa");
-	alice.attack("Fred");
-	alice.attack("Gemma");
-	alice.attack("Henry");
-	alice.attack("Isabella");
-	alice.attack("Jack");
-	alice.attack("Kevin");
-	alice.attack("Laura");
-	alice.attack("Mike");
-	alice.highFivesGuys();
-}
+    ash.whoAmI();
+    ash2.whoAmI();
+    ash3 = ash;
+    ash3.whoAmI();
 
-void	bob_rundown(void)
-{
-	FragTrap	bob("Bob", "lala");
+    ash.attack( "the air" );
+    ash.takeDamage( 10 );
+    ash.beRepaired( 10 );
 
-    bob.takeDamage(20);
-    bob.beRepaired(10);
-	bob.takeDamage(1);
-	bob.highFivesGuys();
-}
-
-int	main(void)
-{
-	std::cout << std::endl << std::endl << "Performing Alice's rundown..." << std::endl << std::endl;
-	alice_rundown();
-	std::cout << std::endl << std::endl << "Performing Bob's rundown..." << std::endl << std::endl;
-	bob_rundown();
+    return EXIT_SUCCESS;
 }

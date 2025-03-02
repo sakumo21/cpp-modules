@@ -2,8 +2,8 @@
 
 int main( void ) 
 {
-    ScavTrap p1("P.E.K.K.A", "hog rider");
-    ScavTrap p2("Goblin machine","prince");
+    ScavTrap p1("P.E.K.K.A");
+    ScavTrap p2("Goblin machine");
 
     p1.ClapTrap::get_stats();
     p2.ClapTrap::get_stats();

@@ -5,13 +5,9 @@
 
 class FragTrap :virtual public ClapTrap
 {
-    private:
-    std::string name;
-    int         hit_point;
-    int         energy_pts;
-    int         att_damage;
     public:
-    FragTrap(std::string name, std::string parentname);
+    FragTrap();
+    FragTrap(std::string name);
     ~FragTrap();
     void highFivesGuys(void);
     void get_stats();

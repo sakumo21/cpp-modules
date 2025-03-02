@@ -16,7 +16,7 @@
 
 void	alice_rundown(void)
 {
-	FragTrap alice("Alice", "nini");
+	FragTrap alice("Alice");
 
 	alice.attack("Bob");
 	alice.attack("Chris");
@@ -35,7 +35,7 @@ void	alice_rundown(void)
 
 void	bob_rundown(void)
 {
-	FragTrap	bob("Bob", "lala");
+	FragTrap	bob("Bob");
 
     bob.takeDamage(20);
     bob.beRepaired(10);

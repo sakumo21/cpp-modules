@@ -1,7 +1,10 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name, std::string parentname): ClapTrap(parentname), name(name), hit_point(100), energy_pts(100), att_damage(30) 
+FragTrap::FragTrap(std::string name): ClapTrap(name)
 {
+    hit_point = 100;
+    energy_pts = 100;
+    att_damage = 30;
     std::cout << "FragTrap with the name " << name << "has been created!" << std::endl;
 }
 FragTrap::~FragTrap()

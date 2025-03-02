@@ -1,5 +1,14 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	name = "default";
+	hit_point = 10;
+    energy_pts = 10;
+    att_damage = 0;
+    std::cout << "Scavtrap with the name Default has been created!" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name):name(name), hit_point(10), energy_pts(10), att_damage(0)
 {
     std::cout << "Constructor has been created!" << std::endl;

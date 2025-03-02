@@ -1,7 +1,10 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name, std::string parentname):ClapTrap(parentname), name(name), hit_point(100), energy_pts(50), att_damage(20)
+ScavTrap::ScavTrap(std::string name):ClapTrap(name)
 {
+    hit_point = 100;
+    energy_pts = 50;
+    att_damage = 20;
     std::cout << "Scavtrap with the name " << name << "has been created!" << std::endl;
 }
 
