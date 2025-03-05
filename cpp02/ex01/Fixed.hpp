@@ -9,30 +9,15 @@ class Fixed
     public:
     Fixed(const int i);
     Fixed(const float i);
-    Fixed():fixed(0){std::cout << "Default constructor called" << std::endl;}
-    ~Fixed(){std::cout << "Destructor called" << std::endl;}
-    Fixed(const Fixed& other)
-    {
-        std::cout << "Copy constructor called!" << std::endl;
-        *this = other;
-    }
-    Fixed& operator=(const Fixed& other)
-    {
-        std::cout << "Copy assignment operator called" << std::endl;
-        this->fixed = other.getRawBits();
-        return *this;
-    }
-
+    Fixed();
+    ~Fixed();
+    Fixed(const Fixed& other);
+    Fixed& operator=(const Fixed& other);
     int getRawBits( void ) const;
     void setRawBits( int const raw );
     float toFloat( void ) const;
     int toInt( void ) const;
-
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
-        os << obj.toFloat();
-        return os;
-    }
-
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
     private:
     int                 fixed;
     static const int    fract;

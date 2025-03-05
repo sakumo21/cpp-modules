@@ -20,33 +20,22 @@ void	Replicate::replace(std::string s1, std::string s2)
     std::string new_line;
     size_t      i;
 
-    if (s1.empty())
-    {
-        std::cout << "xzxzx" << std::endl;
-    }
-    else
-    {
-        std::cout << "ccscsc" << std::endl;
-    }
     std::ifstream inputFile(o_file.c_str());
     if (!inputFile.is_open())
     {
     	std::cerr << "Failed to open the file for reading!" << "\n";
     	return ;
     }
-
     std::ofstream outputFile(r_file.c_str());
     if (!outputFile.is_open())
     {
     	std::cerr << "Failed to open the file for writing!" << "\n";
     	return ;
     }
-
 	while (std::getline(inputFile, line))
     {
         if (!s1.empty() && s1 != s2)
         {
-            std::cout << "xzxzx2" << std::endl;
             i = line.find(s1);
             new_line = line;
             while (i != std::string::npos)
@@ -58,9 +47,7 @@ void	Replicate::replace(std::string s1, std::string s2)
             outputFile << new_line << std::endl;
         }
         else
-        {
             outputFile << line << std::endl;
-        }
     }
     outputFile.close();
     inputFile.close();

@@ -24,6 +24,28 @@ static	float ft_pow(float base, int exp)
 	return (result);
 }
 
+Fixed::Fixed(const Fixed& other)
+{
+    *this = other;
+}
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj) 
+{
+    os << obj.toFloat();
+    return os;
+}
+
+Fixed& Fixed::operator=(const Fixed& other)
+{
+    this->fixed = other.getRawBits();
+    return *this;
+}
+
 int Fixed::getRawBits( void ) const
 {
     return (this->fixed); 
