@@ -1,5 +1,8 @@
 #include "HumanA.hpp"
 
+HumanA::HumanA(std::string NewName, Weapon &newType): type(newType), name(NewName)
+{}
+
 HumanA::~HumanA()
 {}
 

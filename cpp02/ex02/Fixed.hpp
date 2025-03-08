@@ -10,22 +10,10 @@ class Fixed
     Fixed();
     Fixed(const int i);
     Fixed(const float i);
-    ~Fixed(){std::cout << "Destructor called" << std::endl;}
-    Fixed(const Fixed& other)
-    {
-        *this = other;
-    }
-    Fixed& operator=(const Fixed& other)
-    {
-        this->fixed = other.getRawBits();
-        return *this;
-    }
+    ~Fixed();
+    Fixed(const Fixed& other);
 
-    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
-        os << obj.toFloat();
-        return os;
-    }
-
+    Fixed& operator=(const Fixed& other);
     bool operator>(const Fixed& other) const;
     bool operator<(const Fixed& other) const;
     bool operator>=(const Fixed& other) const;
@@ -44,6 +32,7 @@ class Fixed
     static const Fixed& min(const Fixed& f1, const Fixed& f2);
     static  Fixed& max(Fixed& f1, Fixed& f2);
     static const Fixed& max(const Fixed& f1, const Fixed& f2);
+    friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
     int getRawBits( void ) const;
     void setRawBits( int const raw );

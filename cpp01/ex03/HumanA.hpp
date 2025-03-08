@@ -6,7 +6,7 @@
 class HumanA
 {
     public:
-    HumanA(std::string NewName, Weapon &newType): type(newType), name(NewName) {}
+    HumanA(std::string NewName, Weapon &newType);
     ~HumanA();
     void attack();
     private:

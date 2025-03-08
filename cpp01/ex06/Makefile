@@ -1,5 +1,5 @@
 CPP = c++
-CPPFLAGS = -Wall -Wextra -std=c++98 -fsanitize=address -g3
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Harl.cpp
 TARGET = test
@@ -10,6 +10,4 @@ $(TARGET): $(SRCS)
 	$(CPP) $(CPPFLAGS) $(SRCS) -o $(TARGET)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
-
-.PHONY: all clean
+	rm -f $(TARGET)

@@ -18,10 +18,13 @@ void test(std::string level)
     {
     case 0:
         a.complain("WARNING");
+        // fall through
     case 1:
         a.complain("INFO");
+        // fall through
     case 2:
         a.complain("ERROR");
+        // fall through
     case 3:
         a.complain("DEBUG");
         break ;

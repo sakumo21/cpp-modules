@@ -1,5 +1,8 @@
 #include "HumanB.hpp"
 
+HumanB::HumanB(std::string NewName): name(NewName)
+{}
+
 HumanB::~HumanB()
 {}
 

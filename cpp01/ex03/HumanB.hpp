@@ -6,7 +6,7 @@
 class HumanB 
 {
     public:
-    HumanB(std::string NewName): name(NewName) {}
+    HumanB(std::string NewName);
     ~HumanB();
     void attack();
     void setWeapon(Weapon &setType);

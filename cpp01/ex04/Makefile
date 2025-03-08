@@ -1,5 +1,5 @@
 CPP = c++
-CPPFLAGS = -Wall -Wextra -std=c++98 -fsanitize=address -g3
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp Replicate.cpp
 TARGET = test
@@ -11,5 +11,3 @@ $(TARGET): $(SRCS)
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-.PHONY: all clean

@@ -7,6 +7,7 @@ Zombie::Zombie(std::string name)
 
 Zombie::Zombie()
 {
+    std::cout << "Default constructor called!" << std::endl;
 }
 
 Zombie::~Zombie()
