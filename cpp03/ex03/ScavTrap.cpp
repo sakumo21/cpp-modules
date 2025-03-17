@@ -39,7 +39,7 @@ ScavTrap::~ScavTrap()
 
 void ScavTrap::attack(const std::string& target)
 {
-    if (hit_point > 0 || energy_pts == 0)
+    if (hit_point > 0 || energy_pts != 0)
     {
         energy_pts--;
         std::cout << name << "'s ScavTrap has attacked " << target << ", causing him to lose " << att_damage << " hit_points!" << std::endl;

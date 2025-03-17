@@ -41,7 +41,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(const std::string& target)
 {
-    if (hit_point > 0 || energy_pts == 0)
+    if (hit_point > 0 || energy_pts != 0)
     {
         energy_pts--;
         std::cout << name << "'s ClapTrap has attacked " << target << ", causing him to lose " << att_damage << " hit_points!" << std::endl;
@@ -58,7 +58,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 }
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (hit_point > 0 || energy_pts == 0)
+    if (hit_point > 0 || energy_pts != 0)
     {
         energy_pts--;
         if (hit_point < 10)
