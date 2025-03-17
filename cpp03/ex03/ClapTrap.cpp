@@ -1,9 +1,35 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap()
+{
+	name = "default";
+	hit_point = 10;
+    energy_pts = 10;
+    att_damage = 0;
+    std::cout << "ClapTrap with the name Default has been created!" << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name):name(name), hit_point(10), energy_pts(10), att_damage(0)
 {
     std::cout << "Constructor has been created!" << std::endl;
 }
+
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+    std::cout << "Copy constructor called!" << std::endl;
+    *this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    this->name = other.name;
+    this->hit_point = other.hit_point;
+    this->energy_pts = other.energy_pts;
+    this->att_damage = other.att_damage;
+    return *this;
+}
+
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClpaTrap Destructor has been called!" << std::endl;

@@ -1,5 +1,4 @@
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 #include "Brain.hpp"
 
 int main()
@@ -19,6 +18,11 @@ int main()
         std::cout << "animals[" << i << "]" << std::endl;
         animals[i] = new Dog();
     }
+
+    animals[0]->setidea(0, "am a cat maaan");
+    std::cout << animals[0]->getidea(0); << std::endl;
+    std::cout << animals[0]->getidea(1); << std::endl;
+
     for (int i = 0; i < 5; i++)
     {
         std::cout << "animals[" << i << "]" << std::endl;

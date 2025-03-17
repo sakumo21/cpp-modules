@@ -1,7 +1,7 @@
 CPP = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp Brain.cpp
 TARGET = test
 
 all: $(TARGET)
@@ -11,5 +11,3 @@ $(TARGET): $(SRCS)
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-.PHONY: all clean

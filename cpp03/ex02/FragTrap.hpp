@@ -5,13 +5,11 @@
 
 class FragTrap :public ClapTrap
 {
-    private:
-    std::string name;
-    int         hit_point;
-    int         energy_pts;
-    int         att_damage;
     public:
-    FragTrap(std::string name, std::string parentname);
+    FragTrap(std::string name);
+    FragTrap();
+    FragTrap(const FragTrap& other);
+    FragTrap& operator=(const FragTrap& other);
     ~FragTrap();
     void highFivesGuys(void);
     void get_stats();

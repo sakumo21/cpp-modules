@@ -1,8 +1,35 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name, std::string parentname):ClapTrap(parentname), name(name), hit_point(100), energy_pts(50), att_damage(20)
+ScavTrap::ScavTrap()
 {
+    hit_point = 100;
+    energy_pts = 50;
+    att_damage = 20;
+    std::cout << "Scavtrap with the name Default has been created!" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name):ClapTrap(name)
+{
+    hit_point = 100;
+    energy_pts = 50;
+    att_damage = 20;
     std::cout << "Scavtrap with the name " << name << "has been created!" << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& other)
+{
+    std::cout << "Copy constructor called!" << std::endl;
+    *this = other;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    this->name = other.name;
+    this->hit_point = other.hit_point;
+    this->energy_pts = other.energy_pts;
+    this->att_damage = other.att_damage;
+    return *this;
 }
 
 ScavTrap::~ScavTrap()

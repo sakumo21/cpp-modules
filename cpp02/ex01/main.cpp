@@ -16,12 +16,3 @@ int main( void ) {
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	return 0;
 	}
-// 	Fixed::Fixed(const float i): fixed(roundf(i * ft_pow(2, this->fract)))
-// {  
-// 	std::cout << "Float constructor called" << std::endl; 
-// } 
-
-// float Fixed::toFloat( void ) const  
-// {
-//     return (this->fixed * ft_pow(2, -this->fract));
-// }

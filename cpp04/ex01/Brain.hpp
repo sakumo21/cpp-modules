@@ -10,10 +10,11 @@ class Brain
 
     public:
     Brain();
+    Brain& operator=(const Brain& other);
     ~Brain();
     Brain(const Brain& other);
-    // void setidea(std::string &idea, int index);
-    // std::string getidea(int index);
+    void setidea(int i, std::string idea);
+    std::string getidea(int i) const;
 };
 
 #endif
