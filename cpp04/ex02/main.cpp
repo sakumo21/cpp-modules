@@ -1,32 +1,62 @@
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 #include "Brain.hpp"
 
-int main()
+int main(void)
 {
-    // const Animal* j = new Dog();
-    // const Animal* i = new Cat();
+	{
+		const Animal *lotsOfAnimals[10];
 
-    // delete j;
-    // delete i;
-    const Animal *animals[10];
-    for (int i = 0; i < 5; i++)
-    {
-        animals[i] = new Cat();
-    }
-    for (int i = 5; i < 10; i++)
-    {
-        std::cout << "animals[" << i << "]" << std::endl;
-        animals[i] = new Dog();
-    }
-    for (int i = 0; i < 5; i++)
-    {
-        std::cout << "animals[" << i << "]" << std::endl;
-        delete animals[i];
-    }
-    for (int i = 5; i < 10; i++)
-    {
-        std::cout << "animals[" << i << "]" << std::endl;
-        delete animals[i];
-    }
+		for (int i = 0; i < 10; i++)
+		{
+			if (i < 10 / 2)
+				lotsOfAnimals[i] = new Dog();
+			else
+				lotsOfAnimals[i] = new Cat();
+		}
+		std::cout << "-------------------------------------\n";
+		std::cout << lotsOfAnimals[0]->getType() << std::endl;
+		std::cout << lotsOfAnimals[5]->getType() << std::endl;
+		std::cout << "-------------------------------------\n";
+		for (int i = 0; i < 10; i++)
+			delete lotsOfAnimals[i];
+	}
+	std::cout << "-------------------------------------\n";
+	{
+		std::cout << "Check deep copy of Dog class using copy constructor:\n" << std::endl;
+		Dog *dogA = new Dog;
+		Dog *dogB = new Dog(*dogA);
+
+		delete dogA;
+		delete dogB;
+	}
+	std::cout << "-------------------------------------\n";
+	{
+		std::cout << "Check deep copy of Dog class using assignment operator overload:\n" << std::endl;
+		Dog *dogA = new Dog;
+		Dog *dogB = new Dog;
+
+		*dogA = *dogB;
+		delete dogA;
+		delete dogB;
+	}
+	std::cout << "-------------------------------------\n";
+	{
+		std::cout << "Check deep copy of Cat class using copy constructor:\n" << std::endl;
+		Cat *catA = new Cat;
+		Cat *catB = new Cat(*catA);
+
+		delete catA;
+		delete catB;
+	}
+	std::cout << "-------------------------------------\n";
+	{
+		std::cout << "Check deep copy of Cat class using assignment operator overload:\n" << std::endl;
+		Cat *catA = new Cat;
+		Cat *catB = new Cat;
+
+		*catA = *catB;
+		delete catA;
+		delete catB;
+	}
+	return (0);
 }
