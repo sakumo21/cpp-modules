@@ -1,7 +1,7 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp myexceptions.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp myexceptions.cpp AForm.cpp
 TARGET = test
 
 all: $(TARGET)

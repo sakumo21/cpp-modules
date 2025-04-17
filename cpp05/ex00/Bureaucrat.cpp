@@ -11,6 +11,25 @@ Bureaucrat::Bureaucrat(const std::string &name, int n_grade):_name(name)
 		throw (Bureaucrat::GradeTooHighException());
 }
 
+Bureaucrat::Bureaucrat(): _name("Default")
+{
+	std::cout << "Bureaucrat default constractor has been called!" << std::endl;
+	grade = 150;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+{
+	std::cout << "Bureaucrat copy constructor has been called!" << std::endl;
+	*this = other;
+}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+	this->grade = other.grade;
+    return *this;
+}
+
 Bureaucrat::~Bureaucrat()
 {
 	std::cout << "Bureaucrat destractor has been called!" << std::endl;
