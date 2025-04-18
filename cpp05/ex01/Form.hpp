@@ -17,14 +17,14 @@ class Form
 	public:
 		Form(const std::string& _name, int _signers, int _executers);
 		Form& operator=(const Form& other);
-		Form(const std::string &name, int _signers, int _executers);
+		Form(const Form& other);
 		Form();
 		~Form();
 		const std::string& getName() const;
 		bool getSigned() const;
 		int getSigner() const;
 		int getExecuter() const;
-		void beSigned(Bureaucrat signer);
+		void beSigned(const Bureaucrat& signer);
 		class GradeTooHighException: public std::exception
 		{
 			public:

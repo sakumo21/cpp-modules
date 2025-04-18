@@ -3,7 +3,6 @@
 
 Form::Form(const std::string& _name, int _signers, int _executers):name(_name), Signers(_signers), Executers(_executers)
 {
-	std::cout << "form constructor called!!" << std::endl;
 	isSigned = false;
 	if (_signers > 150 || _executers > 150)
 		throw (Form::GradeTooLowException());
@@ -13,18 +12,15 @@ Form::Form(const std::string& _name, int _signers, int _executers):name(_name), 
 
 Form::Form(): name("Default"), isSigned(false), Signers(150), Executers(150)
 {
-	std::cout << "Form default constractor has been called!" << std::endl;
 }
 
 Form::Form(const Form& other)
 {
-	std::cout << "Form copy constructor has been called!" << std::endl;
 	*this = other;
 }
 
 Form& Form::operator=(const Form& other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
 	this->isSigned = other.isSigned;
 	this->Signers = other.Signers;
 	this->Executers = other.Executers;
@@ -33,7 +29,6 @@ Form& Form::operator=(const Form& other)
 
 Form::~Form()
 {
-	std::cout << "form destructor called!!" << std::endl;
 }
 
 const std::string& Form::getName() const
@@ -55,7 +50,8 @@ int Form::getExecuter() const
 {
 	return (Executers);
 }
-void Form::beSigned(Bureaucrat signer)
+
+void Form::beSigned(const Bureaucrat& signer)
 {
 	if (signer.getGrade() > Signers)
 		throw (Form::GradeTooLowException());

@@ -16,15 +16,16 @@ class AForm
 		int		Executers;
 	public:
 		AForm(const std::string& _name, int _signers, int _executers);
-		AForm& operator=(const AForm& other);
-		AForm(const std::string &name, int _signers, int _executers);
+		Form(const Form& other);
 		AForm();
 		~AForm();
+		AForm& operator=(const AForm& other);
 		const std::string& getName() const;
 		bool getSigned() const;
 		int getSigner() const;
 		int getExecuter() const;
-		void beSigned(Bureaucrat signer);
+		void Form::beSigned(const Bureaucrat& signer);
+		virtual void execute(Bureaucrat const & executor) = 0;
 		class GradeTooHighException: public std::exception
 		{
 			public:

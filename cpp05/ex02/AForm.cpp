@@ -55,7 +55,8 @@ int AForm::getExecuter() const
 {
 	return (Executers);
 }
-void AForm::beSigned(Bureaucrat signer)
+
+void Form::beSigned(const Bureaucrat& signer)
 {
 	if (signer.getGrade() > Signers)
 		throw (AForm::GradeTooLowException());
