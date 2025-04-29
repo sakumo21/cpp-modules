@@ -21,7 +21,7 @@ class AForm
 		AForm(const std::string& _name, int _signers, int _executers);
 		AForm(const AForm& other);
 		AForm();
-		~AForm();
+		virtual ~AForm();
 		AForm& operator=(const AForm& other);
 		const std::string& getName() const;
 		bool getSigned() const;

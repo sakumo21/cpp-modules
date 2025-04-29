@@ -1,58 +1,37 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-int main(void)
-{
-	/* Create a form with grade too high */
-	{
-		try
-		{
-			AForm form0("A99", 0, 5);
-			std::cout << form0 << std::endl;
-		}
-		catch(std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-		
-	}
+int main() {
+    std::srand(std::time(0)); // seed for random
 
-	std::cout << "\n --------------------- \n\n";
+    try {
+        Bureaucrat bob("Bob", 1);
+        Bureaucrat low("LowRank", 150);
 
-	/* Create form and sign it without exceptions */
-	{
-		try
-		{
-			Bureaucrat mike("Mike", 15);
-			AForm form("B58", 20, 45);
-			std::cout << mike << std::endl;
-			std::cout << form << std::endl;
-			mike.signForm(form);
-			std::cout << form << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-	}
-	
-	std::cout << "\n --------------------- \n\n";
+        ShrubberyCreationForm shrub("Garden");
+        RobotomyRequestForm robo("Bender");
+        PresidentialPardonForm pardon("Ford Prefect");
 
-	/* Create form and try to sign it but the grade is not enough */
-	{
-		try
-		{
-			Bureaucrat jon("Jon", 35);
-			AForm form2("C_303", 20, 45);
-			std::cout << jon << std::endl;
-			std::cout << form2 << std::endl;
-			jon.signForm(form2);
-			std::cout << form2 << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-	}
-	return (0);
+        std::cout << "\n== Signing Forms ==" << std::endl;
+        bob.signForm(shrub);
+        bob.signForm(robo);
+        bob.signForm(pardon);
+
+        std::cout << "\n== Executing Forms with Bob ==" << std::endl;
+        bob.executeForm(shrub);
+        bob.executeForm(robo);
+        bob.executeForm(pardon);
+
+        std::cout << "\n== Executing Forms with LowRank ==" << std::endl;
+        low.executeForm(shrub);  // should fail
+    } catch (std::exception &e) {
+        std::cerr << "Exception: " << e.what() << std::endl;
+    }
+
+    return 0;
 }

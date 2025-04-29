@@ -10,14 +10,12 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other): AFor
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->target = other.target;
     return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << "RobotomyRequestForm destractor has been called!" << std::endl;
 }
 void RobotomyRequestForm::execute(Bureaucrat const & executor)
 {

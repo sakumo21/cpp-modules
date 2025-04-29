@@ -6,21 +6,19 @@ PresidentialPardonForm::PresidentialPardonForm(): target("Default") {}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other): AForm(other), target(other.target)
 {
-	std::cout << "PresidentialPardonForm copy constructor has been called!" << std::endl;
 	*this = other;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	this->target = other.target;
     return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout << "PresidentialPardonForm destractor has been called!" << std::endl;
 }
+
 void PresidentialPardonForm::execute(Bureaucrat const & executor)
 {
 	if (this->getSigned() == true && executor.getGrade() < this->getSigner() && executor.getGrade() < this->getExecuter())

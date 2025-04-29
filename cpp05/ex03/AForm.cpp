@@ -3,7 +3,6 @@
 
 AForm::AForm(const std::string& _name, int _signers, int _executers):name(_name), Signers(_signers), Executers(_executers)
 {
-	std::cout << "Aform constructor called!!" << std::endl;
 	isSigned = false;
 	if (_signers > 150 || _executers > 150)
 		throw (AForm::GradeTooLowException());
@@ -13,18 +12,15 @@ AForm::AForm(const std::string& _name, int _signers, int _executers):name(_name)
 
 AForm::AForm(): name("Default"), isSigned(false), Signers(150), Executers(150)
 {
-	std::cout << "AForm default constractor has been called!" << std::endl;
 }
 
 AForm::AForm(const AForm& other)
 {
-	std::cout << "AForm copy constructor has been called!" << std::endl;
 	*this = other;
 }
 
 AForm& AForm::operator=(const AForm& other)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
 	this->isSigned = other.isSigned;
 	this->Signers = other.Signers;
 	this->Executers = other.Executers;
@@ -33,7 +29,6 @@ AForm& AForm::operator=(const AForm& other)
 
 AForm::~AForm()
 {
-	std::cout << "Aform destructor called!!" << std::endl;
 }
 
 const std::string& AForm::getName() const
