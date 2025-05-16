@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <sstream>
 #include <iomanip>
+#include <float.h>
+#include <climits>
 class ScalarConverter
 {
     private:

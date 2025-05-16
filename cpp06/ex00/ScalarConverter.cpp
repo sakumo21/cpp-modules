@@ -20,7 +20,7 @@ ScalarConverter::~ScalarConverter()
 
 int check_float(std::string literal)
 {
-    int p = 0;//how many .
+    int p = 0;
     size_t sign = 0;
     if ((literal[sign] == '-' || literal[sign] == '+') && literal.length() > 1)
         sign++;
@@ -103,16 +103,47 @@ int check_type(std::string literal)
 
 size_t count_ap(std::string& literal)
 {
-    int pos = literal.find('.');
+    size_t pos = literal.find('.');
+    if (pos == std::string::npos)
+        return 0;
     size_t count = literal.find_first_not_of("0123456789", pos + 1);
     if (count == std::string::npos) 
         count = literal.length();
     return (count - pos - 1);
 }
 
-void print_float(float num, std::string literal)
+void print_int(double num, std::string literal)
 {
-    int count = count_ap(literal);
+    std::stringstream ss(literal);
+    double i;
+    ss >> i;
+
+    if(i > INT_MAX || i < -INT_MAX)
+    {
+        std::cout << "int: " << "impossible" << std::endl;
+        return ;
+    }
+    std::cout << "int: " << static_cast<int>(num) << std::endl;
+}
+
+void print_float(double num, std::string literal)
+{
+    std::stringstream ss(literal);
+    double f;
+    ss >> f;
+    int count;
+
+    if(f > FLT_MAX || f < -FLT_MAX)
+    {
+        std::cout << "float: " << "impossible" << std::endl;
+        return ;
+    }
+    count = count_ap(literal);
+    if (count == 0)
+    {
+        std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;
+        return ;
+    }
     std::cout << std::fixed << std::setprecision(count);
     std::cout << "float: " << num << "f" << std::endl;
 }
@@ -128,6 +159,29 @@ void print_char(char c, int i)
         std::cout << "char: " << c << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl;
+}
+
+void print_double(double num, std::string literal)
+{
+    std::stringstream ss(literal);
+    long double f;
+    ss >> f;
+    int count;
+
+    if(f > DBL_MAX || f < -DBL_MAX)
+    {
+        std::cout << f << "=" << DBL_MIN << std::endl;
+        std::cout << "double: " << "impossible" << std::endl;
+        return ;
+    }
+    count = count_ap(literal);
+    if (count == 0)
+    {
+        std::cout << "double: " << num << ".0" << std::endl;
+        return ;
+    }
+    std::cout << std::fixed << std::setprecision(count);
+    std::cout << "double: " << num << std::endl;
 }
 
 void test_1(std::string literal)
@@ -158,9 +212,9 @@ void ScalarConverter::convert(const std::string &literal)
             std::cout << "<< char >>" << std::endl;
             char c = literal[0];
             print_char(c, 0);
-            std::cout << "int: " << static_cast<int>(c) << std::endl;
-            std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-            std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+            print_int(static_cast<double>(c), literal);
+            print_float(static_cast<double>(c), literal);
+            print_double(static_cast<double>(c), literal);
             break;
         }
         case 1: // int      
@@ -170,20 +224,20 @@ void ScalarConverter::convert(const std::string &literal)
             ss >> i;        
 
             print_char(static_cast<char>(i), i);
-            std::cout << "int: " << i << std::endl;
-            std::cout << "float: " << static_cast<float>(i) << ".0f" << std::endl;
-            std::cout << "double: " << static_cast<double>(i) << ".0" << std::endl;
+            print_int(static_cast<double>(i), literal);
+            print_float(static_cast<double>(i), literal);
+            print_double(static_cast<double>(i), literal);
             break;
         }
         case 2: // float
         {
-            std::cout << "<< float >>" << std::endl;
             float f;
             ss >> f;
+
             print_char(static_cast<char>(f), static_cast<int>(f));
-            std::cout << "int: " << static_cast<int>(f) << std::endl;
-            print_float(f, literal);
-            std::cout << "double: " << static_cast<double>(f) << std::endl;
+            print_int(static_cast<double>(f), literal);
+            print_float(static_cast<double>(f), literal);
+            print_double(static_cast<double>(f), literal);
             break;
         }
         case 3: // double
@@ -192,9 +246,9 @@ void ScalarConverter::convert(const std::string &literal)
             double d;
             ss >> d;
             print_char(static_cast<char>(d), static_cast<int>(d));
-            std::cout << "int: " << static_cast<int>(d) << std::endl;
-            print_float(static_cast<float>(d), literal);//print_float() todo!!
-            std::cout << "double: " << d << std::endl;
+            print_int(static_cast<double>(d), literal);
+            print_float(d, literal);
+            print_double(d, literal);
             break;
         }
         case 4:
@@ -209,17 +263,3 @@ void ScalarConverter::convert(const std::string &literal)
         }
     }
 }
-
-/*
-tests:
-
-./test 30000000000000000000000000000000000000000
-<< int >>
-char: impossible
-int: 2147483647
-float: 2.14748e+09.0f<=====
-double: 2.14748e+09.0<=====
-
-
-
-*/
