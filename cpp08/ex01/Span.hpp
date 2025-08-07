@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 class Span
 {
@@ -13,6 +14,7 @@ class Span
     Span(unsigned int size);
     Span();
     void addNumber(int i);
+    void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
     int shortestSpan();
     int longestSpan();
     Span(const Span& other);

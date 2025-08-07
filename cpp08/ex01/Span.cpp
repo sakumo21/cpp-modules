@@ -21,6 +21,17 @@ void Span::addNumber(int i)
     }
 }
 
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    std::vector<int>::iterator it;
+
+    for(it = begin; it != end; *it++)
+    {
+        v.push_back(*it);
+    }
+        
+}
+
 int  Span::shortestSpan()
 {
     int shortest;
@@ -28,9 +39,10 @@ int  Span::shortestSpan()
     {
         for (unsigned int i = 0; i < v.size(); i++)
         {
-            for (unsigned int y = 0; y < v.size(); y++)
+            for (unsigned int y = i + 1; y < v.size(); y++)
             {
-                if (!shortest || (i >= y && (i - i) < shortest))
+                if (!shortest || std::abs(v[i] - v[y]) < shortest)
+                    shortest = std::abs(v[i] - v[y]);
             }
         }
     }
@@ -46,8 +58,11 @@ int Span::longestSpan()
     {
         for (unsigned int i = 0; i < v.size(); i++)
         {
-            if (v[i] > shortest)
-                shortest = v[i];
+            for (unsigned int y = 0; y < v.size(); y++)
+            {
+                if ((!shortest || std::abs(v[i] - v[y]) > shortest))
+                    shortest = std::abs(v[i] - v[y]);
+            }
         }
     }
     else
