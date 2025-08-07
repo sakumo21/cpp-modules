@@ -37,14 +37,10 @@ int  Span::shortestSpan()
     int shortest;
     if(v.size() > 1)
     {
-        for (unsigned int i = 0; i < v.size(); i++)
-        {
-            for (unsigned int y = i + 1; y < v.size(); y++)
-            {
-                if (!shortest || std::abs(v[i] - v[y]) < shortest)
-                    shortest = std::abs(v[i] - v[y]);
-            }
-        }
+        std::vector<int>::iterator i = v.begin();
+        for (std::vector<int>::iterator y = i + 1; y != v.end(); y++)
+            if (!shortest || std::abs(*i - *y) < shortest)
+                shortest = std::abs(*i - *y);
     }
     else
         throw(std::runtime_error("ERROR!"));
@@ -53,22 +49,19 @@ int  Span::shortestSpan()
 
 int Span::longestSpan()
 {
-    int shortest = 0;
+    int longest = 0;
     if(v.size() > 1)
     {
-        for (unsigned int i = 0; i < v.size(); i++)
-        {
-            for (unsigned int y = 0; y < v.size(); y++)
-            {
-                if ((!shortest || std::abs(v[i] - v[y]) > shortest))
-                    shortest = std::abs(v[i] - v[y]);
-            }
-        }
+        std::vector<int>::iterator i = v.begin();
+        for (std::vector<int>::iterator y = i + 1; y != v.end(); y++)
+            if (!longest || std::abs(*i - *y) > longest)
+                longest = std::abs(*i - *y);
     }
     else
         throw(std::runtime_error("ERROR!"));
-    return (shortest);
+    return (longest);
 }
+
 
 Span::Span(const Span& other)
 {
