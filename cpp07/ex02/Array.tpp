@@ -1,4 +1,4 @@
-
+#include "Array.hpp"
 
 template <typename T> Array<T>::Array(): _size(0)
 {
