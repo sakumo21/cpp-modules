@@ -4,9 +4,9 @@ Bureaucrat::Bureaucrat(const std::string &name, int n_grade):_name(name)
 {
 	if (n_grade >= 1 && n_grade <= 150)
 		grade = n_grade;
-	else if (grade > 150)
+	else if (n_grade > 150)
 		throw (Bureaucrat::GradeTooLowException());
-	else if (grade < 150)
+	else if (n_grade < 1)
 		throw (Bureaucrat::GradeTooHighException());
 }
 
@@ -43,7 +43,7 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::incGrade()
 {
 	grade--;
-	if (grade < 150)
+	if (grade < 1)
 		throw (Bureaucrat::GradeTooHighException());
 }
 
