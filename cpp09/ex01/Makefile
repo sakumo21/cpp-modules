@@ -1,8 +1,8 @@
 CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp BitcoinExchange.cpp
-TARGET = btc 
+SRCS = main.cpp RPN.cpp
+TARGET = rpn
 
 all: $(TARGET)
 
