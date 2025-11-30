@@ -6,12 +6,11 @@
 #include <algorithm>
 
 
-template<typename T> void easyfind(T cont, int occ)
+template<typename T> int easyfind(T cont, int occ)
 {
     if (std::find(cont.begin(), cont.end(), occ) != cont.end())
-        std::cout << "Found. " << std::endl;
-    else
-        std::cout << "Not found. " << std::endl;
+        return 1;
+    return 0;
 }
 
 #endif

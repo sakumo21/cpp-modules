@@ -10,18 +10,19 @@
 class Span
 {
     private:
-    std::vector<int> v;
-    unsigned int _size;
+        std::vector<int> v;
+        unsigned int _size;
     public:
-    Span(unsigned int size);
-    Span();
-    void addNumber(int i);
-    void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-    int shortestSpan();
-    int longestSpan();
-    Span(const Span& other);
-    Span& operator=(const Span& other);
-    ~Span();
+        Span();
+        Span(unsigned int size);
+        Span(const Span& other);
+        Span& operator=(const Span& other);
+        ~Span();
+        void addNumber(int i);
+        void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+        int shortestSpan();
+        int longestSpan();
+        void printVector();
 };
 
 #endif

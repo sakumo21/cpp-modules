@@ -14,14 +14,14 @@ template <typename T, typename Container = std::deque<T> > class MutantStack : p
     private:
     
     public:
-        MutantStack();
-        MutantStack(const MutantStack& other);
-        MutantStack& operator=(const MutantStack& other);
-        ~MutantStack();
-        typedef typename Container::iterator iterator;
-
-        iterator begin();
-        iterator end();
+    MutantStack();
+    MutantStack(const MutantStack& other);
+    MutantStack& operator=(const MutantStack& other);
+    ~MutantStack();
+    typedef typename Container::iterator iterator;
+    
+    iterator begin();
+    iterator end();
 };
 
 #include "MutantStack.tpp"

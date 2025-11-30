@@ -2,12 +2,17 @@ CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp BitcoinExchange.cpp
-TARGET = btc 
+NAME = btc 
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(SRCS)
-	$(CPP) $(CPPFLAGS) $(SRCS) -o $(TARGET)
+$(NAME): $(SRCS)
+	$(CPP) $(CPPFLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS)
+
+fclean:
+	rm -f $(OBJS) $(NAME)
+
+re: fclean all

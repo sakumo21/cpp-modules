@@ -2,12 +2,15 @@ CPP = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = main.cpp PmergeME.cpp
-TARGET = PmergeMe
+NAME = PmergeMe
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(SRCS)
-	$(CPP) $(CPPFLAGS) $(SRCS) -o $(TARGET)
+$(NAME): $(SRCS)
+	$(CPP) $(CPPFLAGS) $(SRCS) -o $(NAME)
 
+fclean:
+	rm -f $(OBJS) $(NAME)
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS)
+re:fclean all

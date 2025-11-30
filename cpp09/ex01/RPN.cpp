@@ -36,16 +36,27 @@ void RPN::evaluate(std::string &exp)
 {
     std::istringstream iss(exp);
     std::string token;
+    int first, sec;
     while (iss >> token)
     {
         if (isdigit(token))
             _stack.push(toint(token));
         else if (token == "+" || token == "-" || token == "*" || token == "/")
         {
-            int first = _stack.top();
-            _stack.pop();
-            int sec = _stack.top();
-            _stack.pop();
+            if(!_stack.empty())
+            {
+                first = _stack.top();
+                _stack.pop();
+            }
+            else
+                first = 0;
+            if (!_stack.empty())
+            {
+                sec = _stack.top();
+                _stack.pop();
+            }
+            else
+                sec = 0;
             if (token.size() == 1)
             {
                 switch (token[0])
@@ -74,10 +85,7 @@ void RPN::evaluate(std::string &exp)
         }
     }
     if (!_stack.empty())
-    {
         std::cout << _stack.top() << std::endl;
-        _stack.pop();
-    }
 }
 RPN::~RPN()
 {
