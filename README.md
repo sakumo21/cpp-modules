@@ -1,8 +1,8 @@
-📘 C++ Modules (42 School) — C++98
+📘 C++ Modules — C++98
 📌 Overview
 
 This repository contains my implementation of the C++ modules from the 42 curriculum.
-The goal of these modules is to introduce Object-Oriented Programming (OOP) concepts using the C++98 standard, while respecting strict constraints (no modern C++ features).
+The goal of these modules is to introduce Object-Oriented Programming (OOP) concepts using the C++98 standard, while respecting strict constraints.
 
 Each module focuses on specific concepts such as memory management, inheritance, polymorphism, and more.
 
